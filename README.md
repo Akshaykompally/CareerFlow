@@ -8,7 +8,6 @@
 ![LangGraph](https://img.shields.io/badge/LangGraph-Agent-green?style=for-the-badge)
 ![LangChain](https://img.shields.io/badge/LangChain-LLM_Framework-success?style=for-the-badge)
 ![Groq](https://img.shields.io/badge/Groq-LLM-orange?style=for-the-badge)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-LLM-yellow?style=for-the-badge)
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
@@ -19,72 +18,93 @@
 
 # 📖 About The Project
 
-CareerFlow is an AI-powered Interview Preparation and Career Tracking Platform developed to help students monitor interview experiences, analyze performance using Large Language Models (LLMs), and receive personalized recommendations to improve future interview outcomes.
+**CareerFlow** is an AI-powered career management platform designed to help students, fresh graduates, and job seekers organize their interview journey, analyze interview performance, and improve future interview success using Artificial Intelligence.
 
-Instead of manually remembering previous interviews, CareerFlow stores interview records and uses AI to identify mistakes, weak areas, strengths, and personalized study plans.
+The platform enables users to securely manage interview records while leveraging **LangGraph** and **Large Language Models (LLMs)** to generate personalized feedback, identify technical weaknesses, recommend learning resources, and build customized preparation plans.
 
-The platform acts as a personal AI Interview Mentor.
+CareerFlow acts as your **personal AI Interview Coach**, helping you prepare smarter after every interview.
 
 ---
 
 # 🎯 Problem Statement
 
-Many students attend multiple interviews but fail to:
+Most candidates attend multiple interviews but struggle to:
 
-- Track interview history
-- Learn from previous mistakes
-- Identify weak technical skills
-- Build personalized preparation plans
+- Track previous interview experiences
+- Remember technical questions asked
+- Learn from interview mistakes
+- Identify weak technical areas
+- Create structured preparation plans
+- Monitor interview progress over time
 
-CareerFlow solves this problem using AI-powered interview analysis.
+CareerFlow solves these challenges by combining interview management with AI-powered analysis.
 
 ---
 
 # ✨ Features
 
-## 🔐 Authentication System
+## 🔐 Secure Authentication
 
 - User Registration
 - Secure Login
-- Password Hashing
-- Flask Login Authentication
+- Password Hashing using Flask-Bcrypt
+- Flask-Login Authentication
 - Session Management
-- Logout
+- Logout Functionality
 
 ---
 
 ## 📋 Interview Management
 
+Users can:
+
 - Add Interview Details
+- Edit Existing Interviews
+- Delete Interview Records
+- Track Interview Status
+- Store Interview Feedback
+- Maintain Complete Interview History
+
+Interview Details Include:
+
 - Company Name
 - Applied Role
 - Interview Date
+- Number of Interview Rounds
 - Interview Status
-- Number of Rounds
-- Interview Feedback
-- Track Complete Interview History
+- Technical Questions
+- Personal Feedback
+- Additional Notes
 
 ---
 
 ## 🤖 AI Interview Analysis
 
-Automatically analyzes every interview and generates:
+CareerFlow intelligently analyzes interview experiences and generates:
 
 - Interview Mistakes
-- Weak Areas
-- Technical Gaps
-- Strengths
-- Career Recommendations
+- Technical Weak Areas
+- Strong Skills
+- Learning Recommendations
 - Personalized Study Plan
+- Future Interview Strategy
+- Career Guidance
+
+The AI recommendations are generated using **LangGraph** workflows integrated with **LLMs**.
 
 ---
 
 ## 📊 Dashboard
 
-- Interview Records
-- AI Suggestions
-- Career Insights
-- Progress Tracking
+The interactive dashboard provides:
+
+- Total Interviews
+- Selected Interviews
+- Rejected Interviews
+- Pending Interviews
+- AI Recommendations
+- Career Progress
+- Interview Analytics
 
 ---
 
@@ -94,125 +114,133 @@ Automatically analyzes every interview and generates:
 |-----------|------------|
 | Frontend | HTML5, CSS3, JavaScript |
 | Backend | Flask |
-| Authentication | Flask Login |
-| Password Encryption | Flask Bcrypt |
+| Programming Language | Python |
 | Database | MySQL |
-| ORM | Flask-MySQLdb |
+| Authentication | Flask-Login |
+| Password Security | Flask-Bcrypt |
+| Database Connector | Flask-MySQLdb |
 | AI Framework | LangChain |
-| Agent Framework | LangGraph |
-| LLM | HuggingFace Llama 3.1 |
-| AI APIs | HuggingFace Endpoint |
-| Markdown Rendering | Python Markdown |
-| Environment Variables | Python Dotenv |
+| Workflow Engine | LangGraph |
+| LLM Provider | Groq |
+| Embedding/LLM Support | Hugging Face |
+| Environment Variables | Python-dotenv |
+| Markdown Rendering | Python-Markdown |
 
 ---
 
-# 🏗 Project Architecture
+# 🏗 System Architecture
 
-```
-                    User
-                      │
-          HTML • CSS • JavaScript
-                      │
-                 Flask Server
-                      │
-       ┌──────────────┼───────────────┐
-       │                              │
- Authentication                 Interview Module
-       │                              │
- Flask Login                 MySQL Database
-       │                              │
-       └──────────────┬───────────────┘
-                      │
-             AI Recommendation Engine
-                      │
-              LangGraph Workflow
-                      │
-             HuggingFace LLM
-                      │
-             AI Generated Report
-                      │
-                Dashboard
+```text
+                     User
+                       │
+        HTML • CSS • JavaScript Frontend
+                       │
+                  Flask Backend
+                       │
+      ┌────────────────┼────────────────┐
+      │                                 │
+Authentication                 Interview Management
+      │                                 │
+ Flask Login                   MySQL Database
+      │                                 │
+      └────────────────┼────────────────┘
+                       │
+              AI Recommendation Engine
+                       │
+                LangGraph Workflow
+                       │
+             Prompt Engineering Layer
+                       │
+                  Groq / Hugging Face
+                       │
+             AI Generated Recommendations
+                       │
+                  Dashboard Display
 ```
 
 ---
 
-# ⚙️ Workflow
+# ⚙️ Application Workflow
 
-## Step 1
+### Step 1
 
 User creates an account.
 
 ↓
 
-## Step 2
+### Step 2
 
-User logs in securely.
+Logs in securely.
 
 ↓
 
-## Step 3
+### Step 3
 
 Adds interview details.
 
 ↓
 
-## Step 4
+### Step 4
 
-Interview data stored in MySQL.
-
-↓
-
-## Step 5
-
-AI Recommendation Engine retrieves interview history.
+Interview information is stored in MySQL.
 
 ↓
 
-## Step 6
+### Step 5
 
-LangGraph sends structured prompts to LLM.
-
-↓
-
-## Step 7
-
-AI analyzes
-
-- mistakes
-- weak skills
-- interview performance
+The AI Recommendation Engine retrieves interview history.
 
 ↓
 
-## Step 8
+### Step 6
 
-Dashboard displays personalized recommendations.
+LangGraph processes structured prompts.
+
+↓
+
+### Step 7
+
+The LLM analyzes:
+
+- Technical Skills
+- Interview Performance
+- Mistakes
+- Strengths
+- Weak Areas
+
+↓
+
+### Step 8
+
+Personalized recommendations are displayed on the dashboard.
 
 ---
 
 # 🧠 AI Workflow
 
-```
+```text
 Interview Details
         │
         ▼
 Prompt Builder
         │
         ▼
-LangGraph State
+LangGraph Workflow
         │
         ▼
-LLM
+Large Language Model
         │
         ▼
-Mistakes Analysis
+Interview Analysis
         │
         ▼
-Need to Focus
+Mistake Detection
         │
         ▼
-Study Plan
+Skill Gap Analysis
+        │
+        ▼
+Study Plan Generation
         │
         ▼
 Career Recommendations
@@ -222,44 +250,43 @@ Career Recommendations
 
 # 📂 Project Structure
 
-```
+```text
 CareerFlow/
-
 │
 ├── main.py
 ├── database.py
 ├── interview_details.py
-├── AIRecomm.py
 ├── Analyze_interviews.py
+├── AIRecomm.py
 ├── monitor_interviews.py
+├── requirements.txt
+├── .env
 │
 ├── static/
-│      ├── css/
-│      ├── js/
-│      └── images/
+│   ├── css/
+│   ├── js/
+│   └── images/
 │
 ├── templates/
-│      ├── Hero.html
-│      ├── Login.html
-│      ├── Signup.html
-│      ├── Dashboard.html
-│      └── ...
-│
-├── requirements.txt
-│
-├── .env
+│   ├── Hero.html
+│   ├── Login.html
+│   ├── Signup.html
+│   ├── Dashboard.html
+│   ├── Interview.html
+│   ├── History.html
+│   └── AI.html
 │
 └── README.md
 ```
 
 ---
 
-# 🗄 Database Design
+# 🗄 Database Schema
 
-## Table : login_credits
+## login_credits
 
 | Column |
-|----------|
+|---------|
 | user_id |
 | full_name |
 | user_email |
@@ -267,10 +294,10 @@ CareerFlow/
 
 ---
 
-## Table : interview_details
+## interview_details
 
 | Column |
-|-----------|
+|---------|
 | interview_id |
 | user_id |
 | company_name |
@@ -278,35 +305,39 @@ CareerFlow/
 | interview_date |
 | interview_status |
 | rounds_attended |
-| feedback |
+| interview_feedback |
 
 ---
 
 # 🔐 Authentication Flow
 
-```
+```text
 Signup
    │
-Password Hash
+   ▼
+Password Hashing
    │
-Store in Database
+   ▼
+Store Credentials
    │
+   ▼
 Login
    │
-Verify Password
+   ▼
+Password Verification
    │
-Flask Login
+   ▼
+Flask Login Session
    │
-Session Created
-   │
-Dashboard
+   ▼
+Dashboard Access
 ```
 
 ---
 
 # 🤖 AI Recommendation Engine
 
-The AI engine uses LangGraph to execute multiple reasoning stages.
+The AI engine executes multiple reasoning stages using LangGraph.
 
 ### Stage 1
 
@@ -322,7 +353,7 @@ Mistake Identification
 
 ### Stage 3
 
-Weak Skill Detection
+Technical Skill Gap Detection
 
 ↓
 
@@ -334,126 +365,176 @@ Study Plan Generation
 
 ### Stage 5
 
-Career Recommendation
+Career Recommendations
 
 ---
 
 # 📊 AI Output
 
-For every interview the system generates:
+For every interview, CareerFlow generates:
 
-✅ Mistakes
-
-✅ Weak Areas
-
-✅ Strengths
-
-✅ Need to Focus
-
-✅ Study Plan
-
-✅ Career Recommendations
+- ✅ Interview Mistakes
+- ✅ Weak Technical Areas
+- ✅ Strengths
+- ✅ Topics to Focus
+- ✅ Personalized Study Plan
+- ✅ Career Recommendations
 
 ---
 
 # 💻 Installation
 
-Clone Repository
+## Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/CareerFlow.git
+git clone https://github.com/Akshaykompally/CareerFlow.git
 ```
-
-Go inside project
 
 ```bash
 cd CareerFlow
 ```
 
-Create Virtual Environment
+---
+
+## Create Virtual Environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate Environment
-
-Windows
+### Activate (Windows)
 
 ```bash
 venv\Scripts\activate
 ```
 
-Install Dependencies
+### Activate (Linux/macOS)
+
+```bash
+source venv/bin/activate
+```
+
+---
+
+## Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-Run
+---
+
+## Configure Environment Variables
+
+Create a `.env` file in the project root.
+
+```env
+SECRET_KEY=your_secret_key
+
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=your_password
+MYSQL_DB=careerflow
+
+GROQ_API_KEY=your_groq_api_key
+HUGGINGFACEHUB_API_TOKEN=your_huggingface_api_token
+```
+
+---
+
+## Run the Application
 
 ```bash
 python main.py
 ```
 
----
-
-# ⚙ Environment Variables
-
-Create
+Open your browser and visit:
 
 ```
-.env
-```
-
-Add
-
-```env
-MYSQL_HOST=
-
-MYSQL_USER=
-
-MYSQL_PASSWORD=
-
-MYSQL_DB=
-
-HuggingFaceHub_API_Token=
-
-GROQ_API_KEY=
+http://127.0.0.1:5000
 ```
 
 ---
 
-# 📈 Future Enhancements
+# 📦 Main Dependencies
 
-- Resume ATS Analyzer
+- Flask
+- Flask-Login
+- Flask-Bcrypt
+- Flask-MySQLdb
+- LangChain
+- LangGraph
+- Groq
+- Hugging Face
+- Python-dotenv
+- Markdown
+
+---
+
+# 🚀 Future Enhancements
+
 - AI Resume Builder
-- AI Mock Interview
+- ATS Resume Checker
+- Resume Score Analysis
+- Mock Interview Simulator
 - Voice Interview Assistant
-- Coding Assessment
-- Resume Score
-- Job Recommendation
-- Company Wise Questions
-- Email Notifications
-- Analytics Dashboard
+- Coding Assessment Module
+- Company-wise Interview Questions
+- Job Recommendation System
 - Resume Improvement Suggestions
+- Email Notifications
+- Calendar Integration
 - AI Career Roadmap
-- Interview Calendar
-- AI Chat Assistant
+- Analytics Dashboard
+- PDF Report Generation
 
 ---
 
 # 🚀 Why CareerFlow?
 
-- Personalized Interview Analysis
-- AI Powered Suggestions
-- Career Tracking
-- Interview History
+- AI-Powered Interview Analysis
+- Personalized Career Recommendations
+- Interview History Tracking
 - Secure Authentication
-- Modern Web Application
-- Easy to Extend
-- Recruiter Friendly Project
-- Demonstrates Full Stack + AI Integration
+- Interactive Dashboard
+- Full Stack Flask Application
+- LangGraph Agent Workflow
+- Modern AI Integration
+- Recruiter-Friendly Project
+
+---
+
+# 🤝 Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+
+2. Create a feature branch
+
+```bash
+git checkout -b feature-name
+```
+
+3. Commit your changes
+
+```bash
+git commit -m "Added new feature"
+```
+
+4. Push to GitHub
+
+```bash
+git push origin feature-name
+```
+
+5. Open a Pull Request
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
 
 ---
 
@@ -465,8 +546,14 @@ Computer Science Engineering Student
 
 GitHub: https://github.com/Akshaykompally
 
+LinkedIn: *Add your LinkedIn profile here*
+
 ---
 
-# ⭐ If you like this project
+# ⭐ Support
 
-Give it a ⭐ on GitHub and support the project!
+If you found this project useful, please consider giving it a **⭐ Star** on GitHub.
+
+Your support motivates further development and improvements!
+
+**Happy Coding! 🚀**
