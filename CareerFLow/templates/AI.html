@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='AI.css') }}">
+    <title>AI Insights</title>
+</head>
+<body>
+    <div class="header">
+
+        <div class="nav">
+
+            <h1 class="title">
+
+                <span class="highlight1">Interview</span> 
+                <span class="highlight2">Tracker</span>
+
+            </h1>
+
+        </div>
+
+        <div class="page">
+                
+                <a class="nav-item " href="{{ url_for('dashboard.dashboard_page') }}">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+        
+
+                <a class="nav-item" href="{{ url_for('interview.add_interview') }}">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    <span>Add Interview</span>
+                </a>
+
+                <a class="nav-item " href="{{ url_for('history.history_page') }}">
+                    <span class="material-symbols-outlined">history</span>
+                    <span>History</span>
+                </a>
+
+                <a class="nav-item active " href="{{ url_for('ai.ai_insights') }}">
+                    <span class="material-symbols-outlined">network_intel_node</span>
+                    <span>AI Insight</span>
+                </a>
+
+                <a class="nav-item" href="{{ url_for('auth.logout') }}">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Logout</span>
+                </a>
+        </div>
+   
+    </div>
+    <div class="content">
+
+        <div class="username">
+            <h1 class="heading">AI Performance Insights</h1>
+            <span class="down">Peronalized suggestions based on your interview patterns</span>
+        </div>
+
+        {% if analysis %}
+
+            {% for item in analysis %}
+
+            <div class="analysis-card">
+
+                <div class="card-header">
+
+                    <div>
+                        <h2>{{ item.company }}</h2>
+                        <p class="role">{{ item.role }}</p>
+                    </div>
+
+                    <span class="status status-{{ item.status|lower }}">
+                        {{ item.status }}
+                    </span>
+
+                </div>
+
+                <div class="section">
+
+                    <h3>
+                        <span class="material-symbols-outlined">psychology</span>
+                        Interview Analysis
+                    </h3>
+
+                    <div class="ai-content">
+                        {{ item.mistakes|safe }}
+                    </div>
+
+                </div>
+
+                <div class="section">
+
+                    <h3>
+                        <span class="material-symbols-outlined">target</span>
+                        Need To Focus
+                    </h3>
+
+                    <div class="ai-content">
+                        {{ item.focus|safe }}
+                    </div>
+
+                </div>
+
+                <div class="section">
+
+                    <h3>
+                        <span class="material-symbols-outlined">menu_book</span>
+                        Study Plan
+                    </h3>
+
+                    <div class="ai-content">
+                        {{ item.study|safe }}
+                    </div>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="No-logs">
+                <p>Add some interview records to get personalized AI sugggestions!</p>
+            </div>
+
+        {% endif %}
+
+    </div>
+</body>
+</html>

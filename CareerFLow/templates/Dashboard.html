@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='Dashboard.css') }}">
+    <title>Career Flow</title>
+</head>
+<body>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="popup {{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <div class="header">
+        <div class="nav">
+
+            <h1 class="title">
+
+                <span class="highlight1">Interview</span> 
+                <span class="highlight2">Tracker</span>
+
+            
+            </h1>
+
+        </div>
+
+        <div class="page">
+                
+                <a class="nav-item active" href="{{ url_for('dashboard.dashboard_page') }}">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+        
+
+                <a class="nav-item" href="{{ url_for('interview.add_interview') }}">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    <span>Add Interview</span>
+                </a>
+
+                <a class="nav-item" href="{{ url_for('history.history_page') }}">
+                    <span class="material-symbols-outlined">history</span>
+                    <span>History</span>
+                </a>
+
+                <a class="nav-item" href="{{ url_for('ai.ai_insights') }}">
+                    <span class="material-symbols-outlined">network_intel_node</span>
+                    <span>AI Insight</span>
+                </a>
+
+                <a class="nav-item" href="{{ url_for('auth.logout') }}">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Logout</span>
+                </a>
+        </div>
+    
+    </div>
+    
+        <div class="username">
+            <h1 class="heading">Welcome back,{{username}} 👋</h1>
+            <span class="down">Here's your interview performance overview.</span>
+        </div>
+    
+    <div class="tracks">
+        <div class="n-interviews">
+            <span class="material-symbols-outlined" id="c">trip</span>
+            <div class="content">
+                <h1 id="numbers">{{n_interviews}}</h1>
+                <span class="text">Total Interviews</span>
+            </div>
+        </div>
+
+    
+      
+
+        <div class="n-interviews">
+            <span class="material-symbols-outlined" id="a">check_circle</span>
+            <div class="content">
+                <h1 id="numbers">{{accept}}</h1>
+                <span class="text">Accepted</span>
+            </div>
+        </div>
+
+    
+       
+
+        <div class="n-interviews">
+            <span class="material-symbols-outlined" id="r">cancel</span>
+            <div class="content">
+                <h1 id="numbers">{{reject}}</h1>
+                <span class="text">Rejected</span>
+            </div>
+        </div>
+
+      
+    
+        <div class="n-interviews">
+            <span class="material-symbols-outlined" id="p">hourglass_top</span>
+            <div class="content">
+                <h1 id="numbers">{{pending}}</h1>
+                <span class="text">Pending</span>
+            </div>
+        </div>
+
+    </div>
+
+   {% if labels|length > 0 and round_labels|length > 0 %}
+
+    <div class="graphs">
+
+        <div class="chart">
+            <canvas id="statusChart" width="400" height="300"></canvas>
+        </div>
+
+        <div class="barchart">
+            <canvas id="roundChart" width="600" height="400"></canvas>
+        </div>
+
+    </div>
+
+    <div
+        id="chart-data"
+        data-labels='{{ labels | tojson }}'
+        data-data='{{ data | tojson }}'
+        data-round-labels='{{ round_labels | tojson }}'
+        data-round-data='{{ round_data | tojson }}'>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static', filename='dashboard.js') }}"></script>
+    {% else %}
+
+    <div class="No-logs">
+        <p>No interviews recorded yet. Add your first interview to see analytics!</p>
+    </div>
+
+    {% endif %}
+
+</body>
+</html>
