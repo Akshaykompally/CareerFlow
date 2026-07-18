@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='History.css') }}">
+    <title>History</title>
+</head>
+<body>
+    <div class="header">
+
+   
+        <div class="nav">
+
+            <h1 class="title">
+
+                <span class="highlight1">Interview</span> 
+                <span class="highlight2">Tracker</span>
+
+            
+            </h1>
+
+        </div>
+
+        <div class="page">
+                
+                <a class="nav-item " href="{{ url_for('dashboard.dashboard_page') }}">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <span>Dashboard</span>
+                </a>
+        
+
+                <a class="nav-item" href="{{ url_for('interview.add_interview') }}">
+                    <span class="material-symbols-outlined">add_circle</span>
+                    <span>Add Interview</span>
+                </a>
+
+                <a class="nav-item active" href="{{ url_for('history.history_page') }}">
+                    <span class="material-symbols-outlined">history</span>
+                    <span>History</span>
+                </a>
+
+                <a class="nav-item " href="{{ url_for('ai.ai_insights') }}">
+                    <span class="material-symbols-outlined">network_intel_node</span>
+                    <span>AI Insight</span>
+                </a>
+
+                <a class="nav-item" href="{{ url_for('auth.logout') }}">
+                    <span class="material-symbols-outlined">logout</span>
+                    <span>Logout</span>
+                </a>
+        </div>
+   
+    </div>
+
+    <div class="username">
+        
+        <h1 class="heading">Interview History </h1>
+        <span class="down">{{n_interviews}} Records</span>
+    </div>
+
+    {%if result%}
+   
+    {%for values in result%}
+
+    
+    <div class="card">
+
+    
+        <div class="top-row">
+            <div class="left">
+                <span class="material-symbols-outlined icon">corporate_fare</span>
+                <span class="company">{{ values[1] }}</span>
+                <span class="dash">—</span>
+                <span class="role">{{ values[2] }}</span>
+                <span class="status
+                    {% if values[4] == 'Selected' %}accepted
+                    {% elif values[4] == 'Rejected' %}rejected
+                    {% elif values[4] == 'Pending' %}pending
+                    {% endif %}">
+                    {{ values[4] }}
+                </span>
+            </div>
+
+            <a href="{{ url_for('interview.delete_interview', id=values[0]) }}" class="delete">
+                <span class="material-symbols-outlined">delete</span>
+            </a>
+        </div>
+
+        <div class="middle-row">
+            <span class="material-symbols-outlined small-icon">calendar_today</span>
+            <span class="date">{{ values[3] }}</span>
+            <span class="rounds">
+            Rounds: {{ values[5] }}
+            </span>
+        </div>
+
+        <div class="notes-box">
+            {{ values[6] }}
+        </div>
+
+    </div>
+    {% endfor %}
+
+    </div> 
+    {% else %}
+        <div class="No-logs">
+            <p>No interviews recorded yet. Start by adding your first interview!</p>
+        </div>
+    {% endif %}
+
+   
+</body>
+</html>
