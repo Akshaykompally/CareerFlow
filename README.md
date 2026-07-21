@@ -546,7 +546,7 @@ Computer Science Engineering Student
 
 GitHub: https://github.com/Akshaykompally
 
-LinkedIn: *Add your LinkedIn profile here*
+LinkedIn: https://www.linkedin.com/in/kompallyakshay/
 
 ---
 
